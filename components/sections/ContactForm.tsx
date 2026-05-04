@@ -77,7 +77,7 @@ export function ContactForm() {
                 role="status"
                 aria-live="polite"
               >
-                <p className="font-mono text-xl font-bold text-[#0D0D10] mb-2">✓</p>
+                <p className="font-sans text-xl font-bold text-[#0D0D10] mb-2">✓</p>
                 <p className="font-sans text-[14px] text-[#0D0D10] mb-1">
                   We&apos;ll be in touch soon.
                 </p>

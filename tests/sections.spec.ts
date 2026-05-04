@@ -18,9 +18,11 @@ test.describe('AiAutomation section', () => {
   })
 
   test('renders asymmetric split with large headline', async ({ page }) => {
-    const headline = page.locator('#automation h2')
+    const headline = page.locator('#automation-heading')
     await expect(headline).toBeVisible()
-    await expect(headline).toContainText('Your website works while you sleep')
+    // RevealText wraps the h2 in a motion.div with aria-label containing the full text
+    const revealContainer = page.locator('[aria-label="Your website works while you sleep."]')
+    await expect(revealContainer).toBeVisible()
   })
 
   test('renders all four automation items', async ({ page }) => {

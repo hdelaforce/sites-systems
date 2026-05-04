@@ -1,6 +1,9 @@
 'use client'
 
+import { useRef } from 'react'
+import { motion, useInView } from 'framer-motion'
 import { RevealText } from '@/components/motion/RevealText'
+import { staggerContainer, scaleIn } from '@/lib/motion'
 
 const REASONS = [
   {
@@ -26,8 +29,16 @@ const REASONS = [
 ]
 
 export function WhySitesSystems() {
+  const ref = useRef<HTMLElement>(null)
+  const inView = useInView(ref, { once: true, margin: '-10% 0px' })
+
   return (
-    <section className="py-24 md:py-32 px-6 md:px-12" aria-labelledby="why-heading">
+    <section
+      ref={ref}
+      id="why"
+      className="py-24 md:py-32 px-6 md:px-12"
+      aria-labelledby="why-heading"
+    >
       <div className="max-w-7xl mx-auto">
         <p className="font-mono text-[9px] tracking-[4px] uppercase text-[rgba(0,0,0,0.55)] mb-4">
           Why Us
@@ -39,9 +50,18 @@ export function WhySitesSystems() {
           <RevealText>Not just another web studio.</RevealText>
         </h2>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+        <motion.div
+          variants={staggerContainer}
+          initial="hidden"
+          animate={inView ? 'visible' : 'hidden'}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+        >
           {REASONS.map((r) => (
-            <div key={r.label} className="glass-panel p-8 flex flex-col gap-3">
+            <motion.div
+              key={r.label}
+              variants={scaleIn}
+              className="glass-panel p-8 flex flex-col gap-3"
+            >
               <p className="font-sans text-[42px] font-extrabold tracking-tight leading-none text-[#0D0D10]">
                 {r.anchor}
               </p>
@@ -51,9 +71,9 @@ export function WhySitesSystems() {
               <p className="font-sans text-[14px] leading-[1.7] text-[rgba(0,0,0,0.55)]">
                 {r.body}
               </p>
-            </div>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   )

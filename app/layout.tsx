@@ -1,10 +1,12 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Inter, Space_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
 import { ScrollProvider } from '@/components/motion/ScrollProvider'
 import { Cursor } from '@/components/motion/Cursor'
 import { GradientCanvas } from '@/components/motion/GradientCanvas'
+import { PAGECLIP_SCRIPT_URL, PAGECLIP_STYLESHEET_URL } from '@/lib/pageclip'
 
 const cabinetGrotesk = localFont({
   src: '../public/fonts/CabinetGrotesk-Black.woff2',
@@ -73,6 +75,11 @@ export default function RootLayout({
       lang="en-AU"
       className={`${cabinetGrotesk.variable} ${spaceMono.variable} ${inter.variable}`}
     >
+      <link
+        rel="stylesheet"
+        href={PAGECLIP_STYLESHEET_URL}
+        media="screen"
+      />
       <body>
         <GradientCanvas />
         <a href="#main-content" className="skip-link">
@@ -82,6 +89,11 @@ export default function RootLayout({
           <Cursor />
           {children}
         </ScrollProvider>
+        <Script
+          src={PAGECLIP_SCRIPT_URL}
+          strategy="afterInteractive"
+          charSet="utf-8"
+        />
       </body>
     </html>
   )

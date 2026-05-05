@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { PAGECLIP_FORM_ACTION } from '../lib/pageclip'
 
 test.describe('Contact form', () => {
   test.beforeEach(async ({ page }) => {
@@ -6,34 +7,21 @@ test.describe('Contact form', () => {
     await page.waitForSelector('#contact')
   })
 
-  test('shows validation errors on empty submit', async ({ page }) => {
-    await page.click('#contact-submit')
-    await expect(page.locator('#name-error')).toBeVisible()
-    await expect(page.locator('#email-error')).toBeVisible()
-    await expect(page.locator('#message-error')).toBeVisible()
+  test('renders Pageclip form attributes', async ({ page }) => {
+    const form = page.locator('form.pageclip-form')
+    await expect(form).toHaveAttribute('action', PAGECLIP_FORM_ACTION)
+    await expect(form).toHaveAttribute('method', 'post')
   })
 
-  test('shows email error on invalid email', async ({ page }) => {
-    await page.fill('#contact-name', 'Jane')
-    await page.fill('#contact-email', 'not-an-email')
-    await page.fill('#contact-message', 'Hello, this is a test message.')
-    await page.click('#contact-submit')
-    await expect(page.locator('#email-error')).toBeVisible()
-    await expect(page.locator('#email-error')).toContainText('valid email')
+  test('includes named fields for Pageclip', async ({ page }) => {
+    await expect(page.locator('#contact-name')).toHaveAttribute('name', 'name')
+    await expect(page.locator('#contact-email')).toHaveAttribute('name', 'email')
+    await expect(page.locator('#contact-message')).toHaveAttribute('name', 'message')
   })
 
-  test('happy path shows success message', async ({ page }) => {
-    await page.route('**/api/contact', (route) =>
-      route.fulfill({ status: 200, body: JSON.stringify({ ok: true }) })
-    )
-    await page.fill('#contact-name', 'Jane Smith')
-    await page.fill('#contact-email', 'jane@example.com')
-    await page.fill(
-      '#contact-message',
-      'Hello, I am interested in a new website for my cafe.'
-    )
-    await page.click('#contact-submit')
-    await expect(page.locator('#contact-success')).toBeVisible()
-    await expect(page.locator('#contact-success')).toContainText("We'll be in touch")
+  test('uses Pageclip submit button styling', async ({ page }) => {
+    const submit = page.locator('#contact-submit')
+    await expect(submit).toHaveClass(/pageclip-form__submit/)
+    await expect(submit.locator('span')).toHaveText('Send')
   })
 })

@@ -6,7 +6,7 @@ test.describe('Contact form', () => {
     await page.waitForSelector('#contact')
   })
 
-  test('renders pageclip form attributes', async ({ page }) => {
+  test('renders Pageclip form attributes', async ({ page }) => {
     const form = page.locator('form.pageclip-form')
     await expect(form).toHaveAttribute(
       'action',

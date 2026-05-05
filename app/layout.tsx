@@ -75,6 +75,11 @@ export default function RootLayout({
       className={`${cabinetGrotesk.variable} ${spaceMono.variable} ${inter.variable}`}
     >
       <body>
+        <link
+          rel="stylesheet"
+          href="https://s.pageclip.co/v1/pageclip.css"
+          media="screen"
+        />
         <GradientCanvas />
         <a href="#main-content" className="skip-link">
           Skip to main content

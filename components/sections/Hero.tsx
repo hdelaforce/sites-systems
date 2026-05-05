@@ -19,7 +19,7 @@ export function Hero() {
   return (
     <section
       ref={containerRef}
-      className="relative min-h-screen flex flex-col justify-between gradient-mesh grain overflow-hidden"
+      className="relative min-h-screen flex flex-col justify-between grain overflow-hidden"
       aria-label="Hero"
     >
       <HeroMesh />

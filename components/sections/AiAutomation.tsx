@@ -27,7 +27,7 @@ export function AiAutomation() {
   return (
     <section
       id="automation"
-      className="py-24 md:py-32 px-6 md:px-12 gradient-mesh"
+      className="py-24 md:py-32 px-6 md:px-12"
       aria-labelledby="automation-heading"
     >
       <div className="max-w-7xl mx-auto">

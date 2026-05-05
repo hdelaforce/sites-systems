@@ -33,10 +33,12 @@ function HorizontalScroll() {
     target: containerRef,
     offset: ['start start', 'end end'],
   })
+  const cardWidth = 420
+  const cardGap = 24
   const x = useTransform(
     scrollYProgress,
     [0, 1],
-    ['0%', `-${(STEPS.length - 1) * 110}%`]
+    ['0px', `-${(STEPS.length - 1) * (cardWidth + cardGap)}px`]
   )
 
   return (
@@ -75,9 +77,12 @@ export function Process() {
         <p className="font-mono text-[9px] tracking-[4px] uppercase text-[rgba(0,0,0,0.55)] mb-4">
           How It Works
         </p>
-        <h2 id="process-heading" className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-[#0D0D10] mb-16">
+        <h2 id="process-heading" className="font-sans text-2xl md:text-3xl font-bold tracking-tight text-[#0D0D10] mb-6">
           <RevealText>From idea to live site.</RevealText>
         </h2>
+        <p className="font-sans text-[14px] leading-[1.75] text-[rgba(0,0,0,0.55)] max-w-[420px] mb-16">
+          Four steps. One team. No handoffs, no surprises — just a clear path from brief to browser.
+        </p>
       </div>
 
       {/* Mobile: vertical stack */}

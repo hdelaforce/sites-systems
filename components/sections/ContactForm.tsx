@@ -52,7 +52,7 @@ export function ContactForm() {
   return (
     <section
       id="contact"
-      className="py-24 md:py-32 px-6 md:px-12 gradient-mesh"
+      className="py-24 md:py-32 px-6 md:px-12"
       aria-labelledby="contact-heading"
     >
       <div className="max-w-2xl mx-auto">

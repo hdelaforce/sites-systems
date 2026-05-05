@@ -4,6 +4,7 @@ import localFont from 'next/font/local'
 import './globals.css'
 import { ScrollProvider } from '@/components/motion/ScrollProvider'
 import { Cursor } from '@/components/motion/Cursor'
+import { GradientCanvas } from '@/components/motion/GradientCanvas'
 
 const cabinetGrotesk = localFont({
   src: '../public/fonts/CabinetGrotesk-Black.woff2',
@@ -73,6 +74,7 @@ export default function RootLayout({
       className={`${cabinetGrotesk.variable} ${spaceMono.variable} ${inter.variable}`}
     >
       <body>
+        <GradientCanvas />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>

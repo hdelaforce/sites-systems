@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle Sections</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Inter:ital,opsz,wght@0,14..32,400;0,14..32,500;0,14..32,600;0,14..32,700;0,14..32,800;1,14..32,400&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: #0e0e12;
+  color: #f0ede6;
+  font-family: 'Inter', sans-serif;
+  padding: 32px 24px 80px;
+  min-height: 100vh;
+}
+.page-header { margin-bottom: 36px; }
+.page-eyebrow {
+  font-size: 10px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.4);
+  margin-bottom: 8px;
+  font-family: 'Space Mono', monospace;
+}
+.page-title { font-size: 22px; font-weight: 700; color: #f0ede6; margin-bottom: 6px; }
+.page-sub { font-size: 14px; color: rgba(240,237,230,0.5); }
+
+.section-title {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(240,237,230,0.4);
+  margin-bottom: 16px;
+  font-family: 'Space Mono', monospace;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section-title::after { content: ''; flex: 1; height: 1px; background: rgba(255,255,255,0.08); }
+
+.row { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-bottom: 48px; }
+
+.card {
+  background: rgba(255,255,255,0.04);
+  border: 1.5px solid rgba(255,255,255,0.1);
+  border-radius: 14px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: border-color 0.2s, transform 0.15s;
+  user-select: none;
+}
+.card:hover { border-color: rgba(255,255,255,0.25); transform: translateY(-2px); }
+.card.selected { border-color: #7eb8f7; background: rgba(126,184,247,0.06); }
+
+.card-label {
+  padding: 16px 20px 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.letter {
+  width: 26px; height: 26px; border-radius: 50%;
+  background: rgba(255,255,255,0.1);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 11px; font-weight: 700; color: #f0ede6;
+  font-family: 'Inter', sans-serif; flex-shrink: 0;
+}
+.card.selected .letter { background: #7eb8f7; color: #0e0e12; }
+.card-name { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: rgba(240,237,230,0.55); }
+
+.preview {
+  margin: 0 16px 16px;
+  background: #EAE8E2;
+  border-radius: 10px;
+  padding: 28px 24px;
+  color: #0D0D10;
+}
+.caption {
+  padding: 0 20px 16px;
+  font-size: 11px;
+  color: rgba(240,237,230,0.4);
+  line-height: 1.6;
+}
+.caption strong { color: rgba(240,237,230,0.7); }
+.rec-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 3px 9px;
+  background: rgba(126,184,247,0.15);
+  border: 1px solid rgba(126,184,247,0.3);
+  border-radius: 4px;
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #7eb8f7;
+  margin-bottom: 10px;
+  font-family: 'Space Mono', monospace;
+}
+
+/* ---- PREVIEW COMPONENTS ---- */
+.eyebrow {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.4);
+  margin-bottom: 8px;
+}
+.heading {
+  font-family: 'Inter', sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  color: #0D0D10;
+  line-height: 1.2;
+  letter-spacing: -0.4px;
+  margin-bottom: 24px;
+}
+.body-text {
+  font-family: 'Inter', sans-serif;
+  font-size: 13px;
+  line-height: 1.7;
+  color: rgba(0,0,0,0.55);
+}
+.glass {
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.85);
+  border-radius: 10px;
+}
+
+/* WHY US — Option A: Big stat numbers */
+.why-a .stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+.why-a .stat-block {
+  padding: 14px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.85);
+}
+.why-a .stat-num {
+  font-family: 'Inter', sans-serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: #0D0D10;
+  line-height: 1;
+  letter-spacing: -1px;
+  margin-bottom: 4px;
+}
+.why-a .stat-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.4);
+  margin-bottom: 6px;
+}
+.why-a .stat-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 10px;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.55);
+}
+
+/* WHY US — Option B: Large stacked rows (editorial) */
+.why-b .reason-list { display: flex; flex-direction: column; gap: 0; }
+.why-b .reason-row {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding: 12px 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+}
+.why-b .reason-row:first-child { border-top: 1px solid rgba(0,0,0,0.08); }
+.why-b .reason-num {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  color: rgba(0,0,0,0.35);
+  flex-shrink: 0;
+  width: 24px;
+}
+.why-b .reason-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  color: #0D0D10;
+  flex-shrink: 0;
+  width: 80px;
+  letter-spacing: -0.2px;
+}
+.why-b .reason-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.55);
+}
+
+/* WHY US — Option C: Two column with large pull-quote */
+.why-c .two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+.why-c .pull-quote {
+  font-family: 'Inter', sans-serif;
+  font-size: 18px;
+  font-weight: 800;
+  color: #0D0D10;
+  line-height: 1.25;
+  letter-spacing: -0.5px;
+  border-left: 3px solid #0D0D10;
+  padding-left: 14px;
+  margin-bottom: 16px;
+}
+.why-c .reason-item { margin-bottom: 14px; }
+.why-c .reason-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: rgba(0,0,0,0.4);
+  margin-bottom: 3px;
+}
+.why-c .reason-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  line-height: 1.6;
+  color: rgba(0,0,0,0.6);
+}
+
+/* AI AUTOMATION — Option A: Two split columns */
+.ai-a .split { display: grid; grid-template-columns: 1fr 1.2fr; gap: 16px; align-items: start; }
+.ai-a .left-col {}
+.ai-a .big-claim {
+  font-family: 'Inter', sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  color: #0D0D10;
+  line-height: 1.15;
+  letter-spacing: -0.8px;
+  margin-bottom: 10px;
+}
+.ai-a .sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  line-height: 1.65;
+  color: rgba(0,0,0,0.5);
+  margin-bottom: 12px;
+}
+.ai-a .cta {
+  display: inline-block;
+  background: #0D0D10;
+  color: #F0EDE6;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 100px;
+}
+.ai-a .right-col .item {
+  padding: 10px 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.85);
+  margin-bottom: 6px;
+}
+.ai-a .item-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0D0D10;
+  margin-bottom: 2px;
+}
+.ai-a .item-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  line-height: 1.5;
+  color: rgba(0,0,0,0.5);
+}
+
+/* AI AUTOMATION — Option B: Dark panel inversion */
+.ai-b { background: #0D0D10 !important; color: #F0EDE6; }
+.ai-b .eyebrow { color: rgba(240,237,230,0.4); }
+.ai-b .heading { color: #F0EDE6; }
+.ai-b .ai-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.ai-b .ai-item {
+  padding: 12px;
+  border-radius: 8px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.ai-b .ai-title {
+  font-family: 'Inter', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #F0EDE6;
+  margin-bottom: 4px;
+}
+.ai-b .ai-body {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  line-height: 1.5;
+  color: rgba(240,237,230,0.5);
+}
+.ai-b .cta {
+  display: inline-block;
+  background: #F0EDE6;
+  color: #0D0D10;
+  font-family: 'Space Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 8px 14px;
+  border-radius: 100px;
+  margin-top: 12px;
+}
+
+.bar {
+  position: fixed; bottom: 0; left: 0; right: 0;
+  background: #7eb8f7; color: #0e0e12;
+  text-align: center; padding: 12px;
+  font-size: 13px; font-weight: 600;
+  transform: translateY(100%); transition: transform 0.2s;
+}
+.bar.on { transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <div class="page-eyebrow">Sites Systems — Middle Sections</div>
+  <div class="page-title">How should we fix the dry middle?</div>
+  <div class="page-sub">All previews use the new Inter font. Pick directions for each section.</div>
+</div>
+
+<!-- WHY US SECTION -->
+<div class="section-title">Why Sites Systems section <span style="font-weight:400;letter-spacing:0;text-transform:none;color:rgba(240,237,230,0.35);font-family:Inter,sans-serif;font-size:11px">— currently just 4 plain text blocks, very sparse</span></div>
+<div class="row">
+
+  <div class="card" id="card-why-a" onclick="sel('why', 'a')">
+    <div class="card-label">
+      <div class="letter" id="l-why-a">A</div>
+      <span class="card-name">Glass stat cards</span>
+    </div>
+    <div class="preview">
+      <div class="eyebrow">Why Us</div>
+      <div class="heading">Not just another web studio.</div>
+      <div class="why-a">
+        <div class="stats-grid">
+          <div class="stat-block">
+            <div class="stat-num">100%</div>
+            <div class="stat-label">Local</div>
+            <div class="stat-body">We're in Brisbane. You can call us. We know your market.</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">0%</div>
+            <div class="stat-label">Templates</div>
+            <div class="stat-body">Every site built from scratch. No Wix. No Squarespace.</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">You</div>
+            <div class="stat-label">Own Everything</div>
+            <div class="stat-body">Your code, your domain, your data. Always.</div>
+          </div>
+          <div class="stat-block">
+            <div class="stat-num">Long<span style="font-size:18px">-term</span></div>
+            <div class="stat-label">Partnership</div>
+            <div class="stat-body">We're here for the growth after launch.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">Glass cards with bold numerical/keyword anchors. More visual weight than plain text, consistent with the glass-panel design language.</div>
+  </div>
+
+  <div class="card" id="card-why-b" onclick="sel('why', 'b')">
+    <div class="card-label">
+      <div class="letter" id="l-why-b">B</div>
+      <span class="card-name">Editorial rows</span>
+    </div>
+    <div class="preview">
+      <div class="rec-badge">Recommended</div>
+      <div class="eyebrow">Why Us</div>
+      <div class="heading">Not just another web studio.</div>
+      <div class="why-b">
+        <div class="reason-list">
+          <div class="reason-row">
+            <div class="reason-num">01</div>
+            <div class="reason-title">Local</div>
+            <div class="reason-body">We're in Brisbane. You can call us. We know your market.</div>
+          </div>
+          <div class="reason-row">
+            <div class="reason-num">02</div>
+            <div class="reason-title">Custom</div>
+            <div class="reason-body">Every site built from scratch. No Wix. No Squarespace. No templates.</div>
+          </div>
+          <div class="reason-row">
+            <div class="reason-num">03</div>
+            <div class="reason-title">Transparent</div>
+            <div class="reason-body">You own your code, your domain, your data. Always.</div>
+          </div>
+          <div class="reason-row">
+            <div class="reason-num">04</div>
+            <div class="reason-title">Long-term</div>
+            <div class="reason-body">We're not here for the launch. We're here for the growth after it.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="caption"><strong>Clean editorial rows</strong> — numbered, title + body in a tight three-column horizontal layout. Feels finished and structured without being over-designed.</div>
+  </div>
+
+  <div class="card" id="card-why-c" onclick="sel('why', 'c')">
+    <div class="card-label">
+      <div class="letter" id="l-why-c">C</div>
+      <span class="card-name">Pull-quote layout</span>
+    </div>
+    <div class="preview">
+      <div class="eyebrow">Why Us</div>
+      <div class="why-c">
+        <div class="two-col">
+          <div>
+            <div class="pull-quote">Not just another web studio.</div>
+            <div class="body-text" style="font-size:11px">We're in Brisbane. We care about your business. And we're not going anywhere.</div>
+          </div>
+          <div>
+            <div class="reason-item">
+              <div class="reason-label">Local</div>
+              <div class="reason-body">In Brisbane. You can call us. We know your market.</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-label">Custom</div>
+              <div class="reason-body">No Wix. No Squarespace. Built from scratch.</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-label">Transparent</div>
+              <div class="reason-body">You own your code, domain, and data. Always.</div>
+            </div>
+            <div class="reason-item">
+              <div class="reason-label">Long-term</div>
+              <div class="reason-body">Here for the growth after launch.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">Two-column split — large pull-quote on the left, compact reasons on the right. More editorial / magazine feel.</div>
+  </div>
+</div>
+
+<!-- AI AUTOMATION SECTION -->
+<div class="section-title">AI Automation section <span style="font-weight:400;letter-spacing:0;text-transform:none;color:rgba(240,237,230,0.35);font-family:Inter,sans-serif;font-size:11px">— currently a copy of WhatWeDo's layout</span></div>
+<div class="row">
+
+  <div class="card" id="card-ai-a" onclick="sel('ai', 'a')">
+    <div class="card-label">
+      <div class="letter" id="l-ai-a">A</div>
+      <span class="card-name">Split: headline left, items right</span>
+    </div>
+    <div class="preview">
+      <div class="ai-a">
+        <div class="eyebrow">AI Automation</div>
+        <div class="split">
+          <div class="left-col">
+            <div class="big-claim">Your website works while you sleep.</div>
+            <div class="sub">AI-powered workflows built in from day one. Not bolt-ons. Built in.</div>
+            <div class="cta">Ask us what we can automate</div>
+          </div>
+          <div class="right-col">
+            <div class="item"><div class="item-title">Smart booking flows</div><div class="item-body">Customers book, reschedule, and get reminders — without you lifting a finger.</div></div>
+            <div class="item"><div class="item-title">Email responders</div><div class="item-body">Instant, intelligent replies. Followed up. Converted.</div></div>
+            <div class="item"><div class="item-title">Lead capture</div><div class="item-body">Qualify leads automatically. Only the right people reach your inbox.</div></div>
+            <div class="item"><div class="item-title">CRM integration</div><div class="item-body">Every contact flows straight into your CRM.</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="caption">Asymmetric layout — big hero claim on the left, compact items on the right. Very different from WhatWeDo. Feels confident.</div>
+  </div>
+
+  <div class="card" id="card-ai-b" onclick="sel('ai', 'b')">
+    <div class="card-label">
+      <div class="letter" id="l-ai-b">B</div>
+      <span class="card-name">Dark panel inversion</span>
+    </div>
+    <div class="preview ai-b">
+      <div class="rec-badge">Recommended</div>
+      <div class="eyebrow">AI Automation</div>
+      <div class="heading">Your website works while you sleep.</div>
+      <div class="ai-grid">
+        <div class="ai-item"><div class="ai-title">Smart booking flows</div><div class="ai-body">Customers book, reschedule, and get reminders — without you lifting a finger.</div></div>
+        <div class="ai-item"><div class="ai-title">Email responders</div><div class="ai-body">Instant, intelligent replies to enquiries. Followed up. Converted.</div></div>
+        <div class="ai-item"><div class="ai-title">Lead capture</div><div class="ai-body">Qualify leads automatically. Only the right people reach your inbox.</div></div>
+        <div class="ai-item"><div class="ai-title">CRM integration</div><div class="ai-body">Every contact flows straight into your CRM. No manual data entry.</div></div>
+      </div>
+      <div class="cta">Ask us what we can automate</div>
+    </div>
+    <div class="caption"><strong>Dark background inversion</strong> — makes the section stand out immediately as different from the rest of the page. Creates visual rhythm: light → light → dark → light → light.</div>
+  </div>
+
+</div>
+
+<div class="bar" id="bar">Selection recorded — let me know in the chat!</div>
+
+<script>
+const picks = {};
+function sel(section, choice) {
+  const prev = picks[section];
+  if (prev) {
+    document.getElementById('card-' + section + '-' + prev).classList.remove('selected');
+    const pl = document.getElementById('l-' + section + '-' + prev);
+    if (pl) { pl.style.background = ''; pl.style.color = ''; }
+  }
+  picks[section] = choice;
+  document.getElementById('card-' + section + '-' + choice).classList.add('selected');
+  const l = document.getElementById('l-' + section + '-' + choice);
+  if (l) { l.style.background = '#7eb8f7'; l.style.color = '#0e0e12'; }
+  document.getElementById('bar').classList.add('on');
+  fetch('/event', {
+    method: 'POST', headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({type:'click', choice: section+'-'+choice, text: section+' option '+choice.toUpperCase(), timestamp: Date.now()/1000|0})
+  }).catch(()=>{});
+}
+</script>
+</body>
+</html>

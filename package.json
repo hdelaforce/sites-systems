@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "node -e \"const{mkdirSync,existsSync,symlinkSync}=require('fs');const{resolve,join}=require('path');const d=resolve(process.cwd(),'..','node_modules');mkdirSync(d,{recursive:true});const t=join(d,'tailwindcss');if(!existsSync(t))symlinkSync(resolve('node_modules','tailwindcss'),t);\""
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
@@ -21,6 +22,9 @@
     "resend": "^6.12.2",
     "three": "^0.184.0",
     "zod": "^4.3.6"
+  },
+  "pnpm": {
+    "ignoredBuiltDependencies": ["sharp", "unrs-resolver"]
   },
   "devDependencies": {
     "@playwright/test": "^1.59.1",

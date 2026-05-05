@@ -1,4 +1,5 @@
 import { test, expect } from '@playwright/test'
+import { PAGECLIP_FORM_ACTION } from '../lib/pageclip'
 
 test.describe('Contact form', () => {
   test.beforeEach(async ({ page }) => {
@@ -8,10 +9,7 @@ test.describe('Contact form', () => {
 
   test('renders Pageclip form attributes', async ({ page }) => {
     const form = page.locator('form.pageclip-form')
-    await expect(form).toHaveAttribute(
-      'action',
-      'https://send.pageclip.co/Ph9Rz1zy6qCJqcwCPhUkRextPgPvtUwt/contact-form'
-    )
+    await expect(form).toHaveAttribute('action', PAGECLIP_FORM_ACTION)
     await expect(form).toHaveAttribute('method', 'post')
   })
 

@@ -3,6 +3,7 @@
 import { GlassCard } from '@/components/ui/GlassCard'
 import { Pill } from '@/components/ui/Pill'
 import { RevealText } from '@/components/motion/RevealText'
+import { PAGECLIP_FORM_ACTION } from '@/lib/pageclip'
 
 export function ContactForm() {
   const inputClass =
@@ -27,7 +28,7 @@ export function ContactForm() {
 
         <GlassCard className="p-8 md:p-12">
           <form
-            action="https://send.pageclip.co/Ph9Rz1zy6qCJqcwCPhUkRextPgPvtUwt/contact-form"
+            action={PAGECLIP_FORM_ACTION}
             className="pageclip-form flex flex-col gap-6"
             method="post"
             aria-label="Contact form"

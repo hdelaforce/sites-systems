@@ -6,6 +6,7 @@ import './globals.css'
 import { ScrollProvider } from '@/components/motion/ScrollProvider'
 import { Cursor } from '@/components/motion/Cursor'
 import { GradientCanvas } from '@/components/motion/GradientCanvas'
+import { PAGECLIP_SCRIPT_URL, PAGECLIP_STYLESHEET_URL } from '@/lib/pageclip'
 
 const cabinetGrotesk = localFont({
   src: '../public/fonts/CabinetGrotesk-Black.woff2',
@@ -76,7 +77,7 @@ export default function RootLayout({
     >
       <link
         rel="stylesheet"
-        href="https://s.pageclip.co/v1/pageclip.css"
+        href={PAGECLIP_STYLESHEET_URL}
         media="screen"
       />
       <body>
@@ -89,7 +90,7 @@ export default function RootLayout({
           {children}
         </ScrollProvider>
         <Script
-          src="https://s.pageclip.co/v1/pageclip.js"
+          src={PAGECLIP_SCRIPT_URL}
           strategy="afterInteractive"
           charSet="utf-8"
         />

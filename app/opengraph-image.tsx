@@ -23,6 +23,8 @@ export default function OGImage() {
       >
         <div
           style={{
+            display: 'flex',
+            flexDirection: 'column',
             fontSize: '120px',
             fontWeight: 900,
             color: 'transparent',
@@ -31,9 +33,8 @@ export default function OGImage() {
             marginBottom: '32px',
           }}
         >
-          SITES
-          <br />
-          SYSTEMS
+          <span>SITES</span>
+          <span>SYSTEMS</span>
         </div>
         <div
           style={{

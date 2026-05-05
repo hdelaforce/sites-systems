@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { Inter, Space_Mono } from 'next/font/google'
 import localFont from 'next/font/local'
 import './globals.css'
@@ -73,6 +74,13 @@ export default function RootLayout({
       lang="en-AU"
       className={`${cabinetGrotesk.variable} ${spaceMono.variable} ${inter.variable}`}
     >
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://s.pageclip.co/v1/pageclip.css"
+          media="screen"
+        />
+      </head>
       <body>
         <GradientCanvas />
         <a href="#main-content" className="skip-link">
@@ -82,6 +90,11 @@ export default function RootLayout({
           <Cursor />
           {children}
         </ScrollProvider>
+        <Script
+          src="https://s.pageclip.co/v1/pageclip.js"
+          strategy="afterInteractive"
+          charSet="utf-8"
+        />
       </body>
     </html>
   )

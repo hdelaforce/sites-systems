@@ -4,18 +4,44 @@ import Link from 'next/link'
 import { GlassCard } from '@/components/ui/GlassCard'
 
 export const metadata: Metadata = {
-  title: 'La Pola Cafe',
-  description: 'How we built a fast, custom website for La Pola Cafe, Brisbane.',
+  title: 'La Pola Cafe Brisbane — Cafe Website Design Case Study',
+  description:
+    'How we designed and built a fast, custom website for La Pola Cafe Brisbane — sub-second loads, integrated bookings, and first-page Google in 3 weeks. See the full results.',
   openGraph: {
-    title: 'La Pola Cafe — Sites Systems',
-    description: 'How we built a fast, custom website for La Pola Cafe, Brisbane.',
+    title: 'La Pola Cafe Brisbane — Cafe Website Design Case Study',
+    description:
+      'How we designed and built a fast, custom website for La Pola Cafe Brisbane — sub-second loads, integrated bookings, and first-page Google in 3 weeks. See the full results.',
     url: 'https://sites.systems/work/la-pola-cafe',
+  },
+}
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'Article',
+  headline: 'La Pola Cafe — Web Design Case Study',
+  description:
+    'Custom website build for a Brisbane cafe. Sub-second loads, integrated bookings, first-page Google in 3 weeks.',
+  author: { '@type': 'Organization', name: 'Sites Systems', url: 'https://sites.systems' },
+  publisher: { '@type': 'Organization', name: 'Sites Systems', url: 'https://sites.systems' },
+  about: {
+    '@type': 'LocalBusiness',
+    name: 'La Pola Cafe',
+    address: {
+      '@type': 'PostalAddress',
+      addressLocality: 'Brisbane',
+      addressRegion: 'QLD',
+      addressCountry: 'AU',
+    },
   },
 }
 
 export default function LaPolaCafePage() {
   return (
     <main id="main-content" className="gradient-mesh min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <nav className="px-6 md:px-12 pt-8 pb-4">
         <Link
           href="/"

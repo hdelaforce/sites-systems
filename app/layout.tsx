@@ -35,7 +35,7 @@ export const metadata: Metadata = {
     template: '%s — Sites Systems',
   },
   description:
-    'Custom websites for Brisbane small business. No templates, no lock-ins. Book a discovery call.',
+    'Custom websites for Brisbane small businesses. No templates, no lock-ins. We design, build, and automate. Book a free discovery call today.',
   keywords: [
     'website design Brisbane',
     'web design small business Brisbane',
@@ -51,13 +51,13 @@ export const metadata: Metadata = {
     siteName: 'Sites Systems',
     title: 'Sites Systems — Web Design Brisbane',
     description:
-      'Custom websites for Brisbane small business. No templates, no lock-ins. Book a discovery call.',
+      'Custom websites for Brisbane small businesses. No templates, no lock-ins. We design, build, and automate. Book a free discovery call today.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Sites Systems — Web Design Brisbane',
     description:
-      'Custom websites for Brisbane small business. No templates, no lock-ins. Book a discovery call.',
+      'Custom websites for Brisbane small businesses. No templates, no lock-ins. We design, build, and automate. Book a free discovery call today.',
   },
   other: {
     'geo.region': 'AU-QLD',

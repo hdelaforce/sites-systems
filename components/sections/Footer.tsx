@@ -13,8 +13,18 @@ const jsonLd = {
     addressRegion: 'QLD',
     addressCountry: 'AU',
   },
-  description:
-    'Custom websites for Brisbane small business. No templates, no lock-ins.',
+  description: 'Custom websites for Brisbane small business. No templates, no lock-ins.',
+  email: 'hello@sites.systems',
+  hasOfferCatalog: {
+    '@type': 'OfferCatalog',
+    name: 'Web Design & Automation Services',
+    itemListElement: [
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Design' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Web Development' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'Website Maintenance' } },
+      { '@type': 'Offer', itemOffered: { '@type': 'Service', name: 'AI Automation' } },
+    ],
+  },
 }
 
 export function Footer() {

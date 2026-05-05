@@ -76,7 +76,11 @@ export function ContactForm() {
               />
             </div>
 
-            <Pill id="contact-submit" className="pageclip-form__submit self-start">
+            <Pill
+              id="contact-submit"
+              type="submit"
+              className="pageclip-form__submit self-start"
+            >
               <span>Send</span>
             </Pill>
           </form>

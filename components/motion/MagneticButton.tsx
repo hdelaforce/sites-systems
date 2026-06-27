@@ -29,6 +29,7 @@ export function MagneticButton({
   return (
     <motion.div
       ref={ref}
+      className="inline-block w-fit"
       onMouseMove={handleMouse}
       onMouseLeave={reset}
       animate={position}
